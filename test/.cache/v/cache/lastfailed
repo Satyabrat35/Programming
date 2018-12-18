@@ -1,0 +1,4 @@
+{
+  "test_smtp.py::test_echo": true, 
+  "test_smtp.py::test_noop": true
+}
