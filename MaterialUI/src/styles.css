@@ -1,0 +1,61 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.menuButton {
+  margin-left: -12px;
+  margin-right: 20px;
+}
+.root {
+  flex-grow: 1;
+}
+.grow {
+  flex-grow: 1;
+}
+.bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+@media only screen and (min-width: 425px) {
+  .card {
+    margin-top: 20px;
+    margin-left: 450px;
+    margin-right: 450px;
+    display: flex;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .card {
+    margin-top: 20px;
+    display: flex;
+  }
+}
+.details {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+.cover {
+  width: 150px;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+.playicon {
+  width: 43px;
+  height: 43px;
+}
+.chip-root {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.chip {
+  margin-top: 14px;
+}
