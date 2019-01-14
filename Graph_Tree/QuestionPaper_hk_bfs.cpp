@@ -21,7 +21,7 @@ int main()
     cin>>t;
     while(t--){
     int n,a,b,s,d;
-    scanf("%d %d %d",n,a,b);
+    scanf("%d %d %d",&n,&a,&b);
     s=n*b;
     d=n*a + s;
     q.push({s,0});
