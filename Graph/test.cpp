@@ -27,8 +27,11 @@ int main(){
             std::cout<<*it2<<' ';
         }
     }*/
-    vector<pair<int,int>> q;
+    /*vector<pair<int,int>> q;
     q.push_back(make_pair(2,4));
-    cout<<q[0].first;
+    cout<<q[0].first;*/
+    int x = 6,y =8;
+    int temp = __gcd(x,y);
+    cout<<temp;
     return 0;
 }
