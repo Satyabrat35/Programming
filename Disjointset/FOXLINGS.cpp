@@ -12,8 +12,7 @@ typedef unsigned long long int ull;
 #define minm(a,b,c)  min(a,min(c,b))
 #define f(i,n)  for(int i=1;i<n;i++)
 #define rf(i,n) for(int i=n-1;i>=0;i--)
-const ll MAX = 1e9+3;
-map<ll,ll> mp1,arr;
+unordered_map<ll,ll> mp1,arr;
 ll n,k;
 ll root(ll x){
     while(arr[x] != x){
@@ -21,12 +20,6 @@ ll root(ll x){
         x = arr[x];
     }
     return x;
-}
-bool find(ll x,ll y){
-    if(root(x)==root(y))
-        return true;
-    else
-        return false;
 }
 void uniwg(ll x,ll y){
     ll root_x = root(x);
@@ -65,16 +58,6 @@ int main() {
         }
         uniwg(x,y);
     }
-    /*unordered_set<ll> ss;
-    int ct=0;
-    for(ll i=1;i<=n;i++){
-    	if(root(i)==0){
-    		ct++;
-    	}
-    	else {
-    		ss.insert(root(i));
-    	}
-    }*/
     cout<<ct<<endl;
     return 0;
 }
