@@ -1,0 +1,8 @@
+{
+    "credentials" : [
+        {
+            "Cluster_URI": "mongodb+srv://analytics:analytics-password@mycluster-zuqqr.mongodb.net/test?retryWrites=true",
+            "Cluster_Password": "",
+            "Cluster_Key": ""
+    }]
+}
