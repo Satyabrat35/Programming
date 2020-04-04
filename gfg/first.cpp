@@ -1,29 +1,112 @@
-#include <iostream>
-#include <bits/stdc++.h>
-using namespace std;
-int main() {
-	//code
-	int t;
-	cin>>t;
-	while(t--){
-	    int n,m;
-        cin>>n>>m;
-        int a[n];
-        for(int i=0;i<n;i++)cin>>a[i];
-        int dp[n+1][m+1];
-        memset(dp,0,sizeof(dp));
-        for(int i=0;i<=n;i++)dp[i][0]=1;
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<=m;j++){
-                if(j>=a[i-1]){
-                    dp[i][j] = dp[i-1][j]+dp[i-1][j-a[i-1]];
-                }
-                else {
-                    dp[i][j] = dp[i-1][j];
-                }
-            }
-        }
-        cout<<dp[n][m];
-	}
-	return 0;
-}
+    #include<iostream>
+    using namespace std;
+     
+    int n,m,x,y,l;
+    int ar[1001][1001],rs[1001][1001],ans[1001][1001];
+    void dfs(int,int,int);
+    bool issafe(int a,int b) {
+    	return (a>=0 && a<n && b>=0 && b<m && rs[a][b]==0);
+    }
+    void up(int a,int b,int l) {
+    	if(issafe(a-1,b)) {
+    		if(ar[a-1][b]==1 || ar[a-1][b]==2 || ar[a-1][b]==5 || ar[a-1][b]==6) {
+    			dfs(a-1,b,l-1);
+    		}
+    	}
+    }
+    void down(int a,int b,int l) {
+    	if(issafe(a+1,b)) {
+    		if(ar[a+1][b]==1 || ar[a+1][b]==2 || ar[a+1][b]==4 || ar[a+1][b]==7) {
+    			dfs(a+1,b,l-1);
+    		}
+    	}
+    }
+    void left(int a,int b,int l) {
+    	if(issafe(a,b-1)) {
+    		if(ar[a][b-1]==1 || ar[a][b-1]==3 || ar[a][b-1]==4 || ar[a][b-1]==5) {
+    			dfs(a,b-1,l-1);
+    		}
+    	}
+    }
+    void right(int a,int b,int l) {
+    	if(issafe(a,b+1)) {
+    		if(ar[a][b+1]==1 || ar[a][b+1]==3 || ar[a][b+1]==6 || ar[a][b+1]==7) {
+    			dfs(a,b+1,l-1);
+    		}
+    	}
+    }
+    void dfs(int a,int b,int l) {
+    	if(l==0) {
+    		return;
+    	}
+    	ans[a][b]=1;
+    	rs[a][b]=1;
+    	switch(ar[a][b]) {
+    		case 1:
+    			up(a,b,l);
+    			down(a,b,l);
+    			left(a,b,l);
+    			right(a,b,l);
+    			break;
+    		case 2:
+    			up(a,b,l);
+    			down(a,b,l);
+    			break;
+    		case 3:
+    			left(a,b,l);
+    			right(a,b,l);
+    			break;
+    		case 4:
+    			up(a,b,l);
+    			right(a,b,l);
+    			break;
+    		case 5:
+    			down(a,b,l);
+    			right(a,b,l);
+    			break;
+    		case 6:
+    			down(a,b,l);
+    			left(a,b,l);
+    			break;
+    		case 7:
+    			up(a,b,l);
+    			left(a,b,l);
+    			break;
+    		default:
+    			break;
+    	}
+    	rs[a][b]=0;
+    }
+    int main() {
+    	int t,index=1;
+    	cin>>t;
+    	while(t--) {
+    		cin>>n>>m>>x>>y>>l;
+    	//	memset(ans,0,sizeof(ans));
+    	//	memset(rs,0,sizeof(rs));
+    		for(int i=0;i<n;i++) {
+    			for(int j=0;j<m;j++) {
+    				ans[i][j]=0;
+    				rs[i][j]=0;
+    			}
+    		}
+    		for(int i=0;i<n;i++) {
+    			for(int j=0;j<m;j++) {
+    				cin>>ar[i][j];
+    			}
+    		}
+    		if(ar[x][y]) {
+    			dfs(x,y,l);
+    		}
+    		int result=0;
+    		for(int i=0;i<n;i++) {
+    			for(int j=0;j<m;j++) {
+    				result+=ans[i][j];
+    			}
+    		}
+    		cout<<"#"<<index<<" "<<result<<endl;
+    		//cout<<result<<endl;
+    		index++;
+    	}
+    	return 0;
+    }
