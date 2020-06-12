@@ -13,25 +13,17 @@ typedef unsigned long long int ull;
 #define minm(a,b,c)  min(a,min(c,b))
 #define f(i,n)  for(ll i=0;i<n;i++)
 #define rf(i,n) for(ll i=n-1;i>=0;i--)
-
+#define PI 3.14159265
 int main()
 {
     ios_base::sync_with_stdio(0); cin.tie(); cout.tie();
     int n;
     cin>>n;
-    int a[n];
-    map<int,int> mp;
+    long double sl1[n],sl2[n];
     f(i,n){
-        cin>>a[i];
-        mp[i+1+a[i]]++;
+        ll a,b;
+        cin>>a>>b;
+        sl1[i]=(double)a/b;
+        sl2[i]=(double)-b/a;
     }
-    int ct=0;
-    f(i,n){
-        int k = (i+1-a[i]);
-        if(mp.find(k)!=mp.end()){
-            ct+=mp[k];
-        }
-    }
-    
-    cout<<ct<<endl;
 }
